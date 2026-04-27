@@ -1,0 +1,275 @@
+<div class="p-6 min-h-screen">
+  <div class="max-w-[90vw] mx-auto">
+    <!-- Header Section -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
+      <div class="space-y-2">
+        <h1 class="text-3xl font-bold text-gray-900">User Management</h1>
+        <p class="text-gray-600 mt-2">Manage and view all registered users</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <!-- Filter Toggle Button -->
+
+        <!-- Add User Button -->
+        <button
+          type="button"
+          routerLink="/add_user"
+          class="bg-slate-800 hover:bg-slate-800 text-white px-6 py-2.5 font-medium transition-all duration-300 flex items-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v16m8-8H4"
+            />
+          </svg>
+          Add User
+        </button>
+      </div>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="rounded-md mt-10 mb-6 shadow-sm p-5 border-2 border-gray-100">
+     
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <!-- Username Filter -->
+
+        <div>
+          <!-- User Name -->
+          <div class="relative w-full">
+            <input
+              type="text"
+              [(ngModel)]="filters.username"
+              (input)="applyFilters()"
+              placeholder=" "
+              class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-colors"
+            />
+            <label
+              class="absolute left-3 bg-white px-1 top-1/2 -translate-y-1/2 text-sm text-slate-700 pointer-events-none transition-all duration-200 peer-focus:top-2 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-500 peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-slate-700"
+            >
+              User Name
+            </label>
+          </div>
+        </div>
+
+        <!-- Email Filter -->
+        <div>
+          <!-- Email -->
+          <div class="relative w-full">
+            <input
+              type="text"
+              [(ngModel)]="filters.email"
+              (input)="applyFilters()"
+              placeholder=" "
+              class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-colors"
+            />
+            <label
+              class="absolute left-3 bg-white px-1 top-1/2 -translate-y-1/2 text-sm text-slate-700 pointer-events-none transition-all duration-200 peer-focus:top-2 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-500 peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-slate-700"
+            >
+              Email Address
+            </label>
+          </div>
+        </div>
+
+        <!-- Role Filter -->
+        <div>
+          <!-- <label class="block text-sm font-medium text-gray-700 mb-2">Role</label> -->
+          <select
+            [(ngModel)]="filters.role"
+            (ngModelChange)="applyFilters()"
+            class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option *ngFor="let role of roleOptions" [value]="role">
+              {{ role === '' ? 'All Roles' : (role | titlecase) }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Status Filter -->
+        <div>
+          <!-- <label class="block text-sm font-medium text-gray-700 mb-2">Status</label> -->
+          <select
+            [(ngModel)]="filters.status"
+            (ngModelChange)="applyFilters()"
+            class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option *ngFor="let status of statusOptions" [value]="status">
+              {{ status === '' ? 'All Status' : (status | titlecase) }}
+            </option>
+          </select>
+        </div>
+        <button
+          (click)="resetFilters()"
+          class="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200"
+        >
+          Reset Filters
+        </button>
+      </div>
+
+      <!-- Active Filters Display -->
+      <div
+        class="mt-4 flex flex-wrap gap-2"
+        *ngIf="filters.username || filters.email || filters.role || filters.status"
+      >
+        <span class="text-sm text-gray-600">Active filters:</span>
+        <span
+          *ngIf="filters.username"
+          class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-indigo-100 text-indigo-800"
+        >
+          Username: {{ filters.username }}
+        </span>
+        <span
+          *ngIf="filters.email"
+          class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-indigo-100 text-indigo-800"
+        >
+          Email: {{ filters.email }}
+        </span>
+        <span
+          *ngIf="filters.role"
+          class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-indigo-100 text-indigo-800"
+        >
+          Role: {{ filters.role | titlecase }}
+        </span>
+        <span
+          *ngIf="filters.status"
+          class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-indigo-100 text-indigo-800"
+        >
+          Status: {{ filters.status | titlecase }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Users Table -->
+    <div class="bg-white rounded-md shadow-md overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-800">
+            <tr>
+              <th
+                *ngFor="let data of tableheader"
+                scope="col"
+                class="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider"
+              >
+                {{ data }}
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr
+              *ngFor="let data of filteredUserdata; let i = index"
+              class="hover:bg-gray-50 transition-colors duration-200"
+            >
+              <!-- S.No -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                {{ i + 1 }}
+              </td>
+
+              <!-- Username -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                {{ data.userName }}
+              </td>
+
+              <!-- Email -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                {{ data.email }}
+              </td>
+
+              <!-- Role -->
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span
+                  class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full"
+                  [ngClass]="{
+                    'bg-green-100 text-green-800': data.role === 'admin',
+                    'bg-blue-100 text-blue-800': data.role === 'customer',
+                    'bg-purple-100 text-purple-800': data.role === 'staff',
+                  }"
+                >
+                  {{ data.role }}
+                </span>
+              </td>
+
+              <!-- Status -->
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span
+                  class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full"
+                  [ngClass]="{
+                    'bg-green-100 text-green-800': data.status === 'active',
+                    'bg-red-100 text-red-800': data.status === 'inactive',
+                  }"
+                >
+                  {{ data.status }}
+                </span>
+              </td>
+
+              <!-- Created -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                {{ data.createdAt | date: 'dd/MM/yyyy' }}
+              </td>
+
+              <!-- Updated -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                {{ data.updatedAt | date: 'dd/MM/yyyy' }}
+              </td>
+
+              <!-- Actions -->
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <div class="flex items-center space-x-3">
+                  <!-- Edit Button -->
+                  <button
+                    (click)="editUser(data)"
+                    [routerLink]="['/edit_user/', data._id]"
+                    class="text-indigo-600 hover:text-indigo-900 transition-colors duration-200"
+                    title="Edit User"
+                  >
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <!-- Delete Button -->
+                  <button
+                    (click)="confirmdelete(data._id)"
+                    class="text-red-600 hover:text-red-900 transition-colors duration-200"
+                    title="Delete User"
+                  >
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="filteredUserdata.length === 0" class="text-center py-12">
+        <svg
+          class="mx-auto h-12 w-12 text-gray-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+          ></path>
+        </svg>
+        <h3 class="mt-2 text-sm font-medium text-gray-900">No users found</h3>
+        <p class="mt-1 text-sm text-gray-500">Try adjusting your filters or create a new user.</p>
+      </div>
+    </div>
+  </div>
+</div>

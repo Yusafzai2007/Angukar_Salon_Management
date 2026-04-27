@@ -1,0 +1,357 @@
+<div class="mx-auto p-4 md:p-6">
+  <!-- Header Section -->
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
+    <div class="space-y-2">
+      <h1 class="text-3xl font-bold text-gray-900">Service Management</h1>
+      <p class="text-gray-600 mt-2">Manage and monitor all your salon services</p>
+    </div>
+    <div class="flex items-center gap-4">
+      <!-- Filter Toggle Button -->
+
+      <!-- Add User Button -->
+      <button
+        type="button"
+        routerLink="/add_service"
+        class="bg-slate-800 hover:bg-slate-800 text-white px-6 py-2.5 font-medium transition-all duration-300 flex items-center gap-2"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 4v16m8-8H4"
+          />
+        </svg>
+        Add Services
+      </button>
+    </div>
+  </div>
+
+  <!-- Advanced Search Filters -->
+  <div class="bg-white rounded-sm shadow-md border border-gray-200 p-6 mb-6">
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-4 items-end">
+      <!-- Service Name -->
+      <div class="relative w-full">
+        <input
+          type="text"
+          [(ngModel)]="searchTermServiceName"
+          (input)="filterServices()"
+          placeholder=" "
+          class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-colors"
+        />
+        <label
+          class="absolute left-3 bg-white px-1 top-1/2 -translate-y-1/2 text-sm text-slate-700 transition-all duration-200 peer-focus:top-2 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-500 peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs"
+        >
+          Service Name
+        </label>
+      </div>
+
+      <!-- Category -->
+    <div class="relative w-full">
+  <input
+    type="text"
+    id="search_category_floating"
+    [(ngModel)]="searchTermCategory"
+    (input)="filterServices()"
+    placeholder=" "
+    class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+  />
+
+  <label
+    for="search_category_floating"
+    class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200
+    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400
+    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
+    peer-[&:not(:placeholder-shown)]:text-xs"
+  >
+    Category
+  </label>
+</div>
+      
+
+   <div class="relative w-full">
+  <input
+    type="text"
+    id="search_duration_floating"
+    [(ngModel)]="searchTermDuration"
+    (input)="filterServices()"
+    placeholder=" "
+    class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+  />
+
+  <label
+    for="search_duration_floating"
+    class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200
+    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400
+    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
+    peer-[&:not(:placeholder-shown)]:text-xs"
+  >
+    Duration
+  </label>
+</div>
+
+     <div class="relative w-full">
+  <input
+    type="text"
+    id="search_description_floating"
+    [(ngModel)]="searchTermDescription"
+    (input)="filterServices()"
+    placeholder=" "
+    class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+  />
+
+  <label
+    for="search_description_floating"
+    class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200
+    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400
+    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
+    peer-[&:not(:placeholder-shown)]:text-xs"
+  >
+    Description
+  </label>
+</div>
+   <div class="relative w-full">
+  <input
+    type="number"
+    id="search_discount_floating"
+    [(ngModel)]="searchTermDiscount"
+    (input)="filterServices()"
+    placeholder=" "
+    class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+  />
+
+  <label
+    for="search_discount_floating"
+    class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200
+    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400
+    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
+    peer-[&:not(:placeholder-shown)]:text-xs"
+  >
+    Discount
+  </label>
+</div>
+
+      <!-- Button (NEW COLUMN) -->
+      <div class="flex items-end">
+        <button
+          (click)="clearAllFilters()"
+          class="w-full px-4 py-3 bg-slate-800 text-white rounded-lg transition-all duration-200 text-sm font-semibold flex items-center justify-center gap-2"
+        >
+          🗑️ Clear Filter
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Filters Display -->
+    <div
+      *ngIf="searchTermServiceName || searchTermCategory || searchTermDuration"
+      class="mt-4 pt-3 border-t border-gray-200"
+    >
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="text-xs text-gray-500">Active filters:</span>
+        <span
+          *ngIf="searchTermServiceName"
+          class="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs"
+        >
+          Service: {{ searchTermServiceName }}
+          <button (click)="clearServiceNameSearch()" class="hover:text-purple-900">✕</button>
+        </span>
+        <span
+          *ngIf="searchTermCategory"
+          class="inline-flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs"
+        >
+          Category: {{ searchTermCategory }}
+          <button (click)="clearCategorySearch()" class="hover:text-green-900">✕</button>
+        </span>
+        <span
+          *ngIf="searchTermDuration"
+          class="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs"
+        >
+          Duration: {{ searchTermDuration }} min
+          <button (click)="clearDurationSearch()" class="hover:text-blue-900">✕</button>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Table -->
+  <div class="bg-white rounded-sm shadow-sm border-2 border-gray-100 overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead class="bg-slate-800">
+          <tr>
+            <th
+              class="px-4 py-4 text-left text-white font-semibold text-xs uppercase tracking-wider"
+              *ngFor="let data of tableheader"
+            >
+              {{ data }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let service of filteredServices; let i = index"
+            class="border-b border-gray-100 hover:bg-gray-50 transition-colors duration-200"
+          >
+            <td class="px-4 py-4 text-purple-600 font-semibold text-sm">{{ i + 1 }}</td>
+            <td class="px-4 py-4">
+              <img
+                [src]="service.service_Image?.[0]"
+                [alt]="service.Service_Name"
+                class="w-14 h-14 object-cover rounded-xl cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 hover:scale-110"
+                (click)="openModal(service)"
+              />
+            </td>
+            <td class="px-4 py-4 font-semibold text-gray-800 text-sm">
+              {{ service.Service_Name }}
+            </td>
+            <td class="px-4 py-4">
+              <span
+                class="inline-block px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold capitalize"
+              >
+                {{ service.category }}
+              </span>
+            </td>
+            <td class="px-4 py-4 font-semibold text-gray-700 text-sm">${{ service.price }}</td>
+            <td class="px-4 py-4">
+              <span
+                class="inline-block px-2 py-1 bg-red-100 text-red-600 rounded-full text-xs font-semibold"
+              >
+                {{ service.discount }}%
+              </span>
+            </td>
+            <td class="px-4 py-4 font-bold text-green-600 text-sm">${{ service.final_price }}</td>
+            <td class="px-4 py-4">
+              <span
+                class="inline-flex items-center gap-1 px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-semibold"
+              >
+                ⏱️ {{ service.duration }} min
+              </span>
+            </td>
+            <td class="px-4 py-4 text-gray-500 text-sm max-w-[200px] truncate">
+              {{ truncateText(service.description, 40) }}
+            </td>
+            <td class="px-4 py-4 text-gray-500 text-sm">
+              {{ formatDate(service.createdAt) }}
+            </td>
+            <td class="px-4 py-4 text-gray-500 text-sm">
+              {{ formatDate(service.updatedAt) }}
+            </td>
+            <!-- Actions -->
+            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+              <div class="flex items-center space-x-3">
+                <!-- Edit Button -->
+                <button
+                  class="text-indigo-600 hover:text-indigo-900 transition-colors duration-200"
+                  title="Edit User"
+                >
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                    ></path>
+                  </svg>
+                </button>
+                <!-- Delete Button -->
+                <button
+                  (click)="onfirmdelete(service._id)"
+                  class="text-red-600 hover:text-red-900 transition-colors duration-200"
+                  title="Delete User"
+                >
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="filteredServices.length === 0">
+            <td colspan="12" class="px-4 py-16 text-center">
+              <div class="flex flex-col items-center gap-3">
+                <span class="text-6xl opacity-50">🔍</span>
+                <p class="text-gray-400 text-lg">No services found matching your filters</p>
+                <button
+                  (click)="clearAllFilters()"
+                  class="mt-2 px-4 py-2 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-lg transition-all duration-200 text-sm font-semibold"
+                >
+                  Clear all filters
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal for Images and Details -->
+  <div
+    *ngIf="isModalOpen"
+    class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 animate-fadeIn"
+    (click)="closeModalOnBackdrop($event)"
+  >
+    <div class="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto animate-slideUp">
+      <!-- Modal Header -->
+      <div
+        class="sticky top-0 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-t-2xl flex justify-between items-center p-6"
+      >
+        <h2 class="text-white text-xl md:text-2xl font-bold flex items-center gap-2">
+          <span>✨</span> {{ selectedService?.Service_Name }}
+        </h2>
+        <button
+          class="bg-white/20 hover:bg-white/30 w-9 h-9 rounded-full flex items-center justify-center text-white text-xl transition-all duration-200 hover:rotate-90"
+          (click)="closeModal()"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-10 bg-white rounded-3xl">
+        <div class="space-y-6">
+          <div
+            class="group relative bg-gray-50 rounded-2xl overflow-hidden aspect-[4/3] flex items-center justify-center border border-gray-100 shadow-inner"
+          >
+            <img
+              [src]="currentImage"
+              [alt]="selectedService?.Service_Name"
+              class="w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+            ></div>
+          </div>
+
+          <div class="flex gap-4 p-1 overflow-x-auto no-scrollbar">
+            <div
+              *ngFor="let img of selectedService?.service_Image; let idx = index"
+              class="relative flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 transform active:scale-95"
+              [class.ring-4]="currentImage === img"
+              [class.ring-purple-600]="currentImage === img"
+              [class.ring-offset-2]="currentImage === img"
+              [class.opacity-60]="currentImage !== img"
+              [class.hover:opacity-100]="currentImage !== img"
+              (click)="setCurrentImage(img)"
+            >
+              <img
+                [src]="img"
+                [alt]="'Thumbnail ' + (idx + 1)"
+                class="w-full h-full object-cover"
+              />
+
+              <div *ngIf="currentImage === img" class="absolute inset-0 bg-purple-600/10"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center"></div>
+      </div>
+    </div>
+  </div>
+</div>

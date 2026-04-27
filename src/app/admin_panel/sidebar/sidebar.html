@@ -1,0 +1,234 @@
+<nav
+  class="fixed top-0 left-0 w-full bg-gray-800 px-6 py-3 flex justify-between items-center z-50 border-b border-slate-800 h-16"
+>
+  <div class="flex items-center text-white text-xl md:text-2xl font-bold">
+    <span class="tracking-wide">Salon ManagementSystem</span>
+  </div>
+
+  <!-- Menu Button - Always visible on mobile/tablet -->
+  <button 
+    class="lg:hidden flex items-center text-white text-3xl focus:outline-none"
+    (click)="toggleSidebar()"
+    aria-label="Toggle menu"
+  >
+    <i class="fas fa-bars cursor-pointer"></i>
+  </button>
+</nav>
+
+<!-- Overlay for mobile when sidebar is open -->
+<div 
+  *ngIf="isMobileView && isSidebarOpen"
+  class="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+  (click)="toggleSidebar()"
+></div>
+
+<!-- Sidebar -->
+<div
+  class="fixed top-16 left-0 h-[calc(100vh-64px)] bg-slate-800 text-white z-40 flex flex-col justify-between transition-all duration-300 ease-in-out overflow-y-auto"
+  [class.w-[200px]]="isSidebarOpen"
+  [class.w-20]="!isSidebarOpen && !isMobileView"
+  [class.-translate-x-full]="!isSidebarOpen && isMobileView"
+  [class.translate-x-0]="isSidebarOpen || !isMobileView"
+>
+  <div>
+    <div class="flex justify-between items-center p-4 border-b border-gray-700">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-globe text-white text-xl animate-spin"></i>
+        <span class="text-xl font-bold" [class.hidden]="!isSidebarOpen && !isMobileView">Salon</span>
+      </div>
+
+      <!-- Desktop collapse button -->
+      <button
+        *ngIf="!isMobileView"
+        (click)="toggleSidebar()"
+        class="text-gray-400 hover:text-white transition"
+      >
+        <i
+          class="fas fa-angle-left text-lg transition-transform"
+          [ngClass]="{ 'rotate-180': !isSidebarOpen }"
+        ></i>
+      </button>
+
+      <!-- Mobile close button inside sidebar -->
+      <button 
+        *ngIf="isMobileView && isSidebarOpen"
+        class="text-2xl text-white hover:text-gray-300"
+        (click)="toggleSidebar()"
+        aria-label="Close menu"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <ul class="flex flex-col w-[200px] mt-5 space-y-2 overflow-y-auto flex-grow">
+      <li>
+        <a
+          routerLink="/user"
+          (click)="closeSidebarOnMobile()"
+          class="block hover:bg-gray-700 rounded transition"
+        >
+          <div class="flex items-center px-5 py-2">
+            <i class="fas fa-tachometer-alt text-white mr-2 text-xs"></i>
+            <span [class.hidden]="!isSidebarOpen && !isMobileView">Dashboard</span>
+          </div>
+        </a>
+
+        <a
+          routerLink="/service"
+          (click)="closeSidebarOnMobile()"
+          class="block w-full hover:bg-gray-700 rounded transition"
+        >
+          <div class="flex items-center px-5 py-2 text-sm">
+            <i class="fas fa-exchange-alt mr-2 text-white text-xs"></i>
+            <span [class.hidden]="!isSidebarOpen && !isMobileView">Stock Transactions</span>
+          </div>
+        </a>
+
+        <a
+          routerLink="/admin/Item_transaction"
+          (click)="closeSidebarOnMobile()"
+          class="block w-full hover:bg-gray-700 rounded transition group"
+        >
+          <div class="flex items-center px-5 py-2 text-sm">
+            <i
+              class="fa-sharp fa-solid fa-money-bill-wave mr-3 text-white text-sm opacity-90 group-hover:opacity-100"
+            ></i>
+            <span [class.hidden]="!isSidebarOpen && !isMobileView" class="whitespace-nowrap">
+              Item Status
+            </span>
+          </div>
+        </a>
+      </li>
+
+      <li>
+        <span class="block w-full ring-1 ring-slate-600"></span>
+      </li>
+
+      <li class="mt-4">
+        <button
+          type="button"
+          class="block w-full hover:bg-gray-700 rounded transition"
+          (click)="toggleConfigure()"
+        >
+          <div class="flex items-center px-5 py-2 text-left">
+            <i class="fas fa-cog text-white mr-2 text-xs"></i>
+            <span [class.hidden]="!isSidebarOpen && !isMobileView">Configure</span>
+          </div>
+        </button>
+
+        <div
+          class="overflow-hidden transition-all duration-500 ease-in-out"
+          [style.maxHeight]="showConfigure ? getConfigureHeight() : '0px'"
+          [style.opacity]="showConfigure ? '1' : '0'"
+        >
+          <div class="mt-2 space-y-2">
+            <div class="block w-full">
+              <div class="px-5 pt-2 pb-1">
+                <h1 class="text-xs text-slate-400 font-medium tracking-wide">User Management</h1>
+              </div>
+            </div>
+
+            <a
+              routerLink="/admin/users"
+              (click)="closeSidebarOnMobile()"
+              class="block w-full hover:bg-gray-700 rounded transition"
+            >
+              <div class="flex items-center px-5 py-2 text-sm">
+                <i class="fas fa-users mr-2 text-white text-xs"></i>
+                <span [class.hidden]="!isSidebarOpen && !isMobileView">Users</span>
+              </div>
+            </a>
+
+            <div class="my-3"></div>
+
+            <div class="block w-full">
+              <div class="px-5 pt-1 pb-1">
+                <h1 class="text-xs text-slate-400 font-medium tracking-wide">Inventory Management</h1>
+              </div>
+            </div>
+
+            <ng-container *ngFor="let item of getInventoryItems()">
+              <a
+                [routerLink]="item.link"
+                (click)="closeSidebarOnMobile()"
+                class="block w-full hover:bg-gray-700 rounded transition"
+              >
+                <div class="flex items-center px-5 py-2 text-sm">
+                  <i [class]="item.icon + ' mr-2 text-white text-xs'"></i>
+                  <span [class.hidden]="!isSidebarOpen && !isMobileView">
+                    {{ item.name }}
+                  </span>
+                </div>
+              </a>
+            </ng-container>
+
+            <div class="my-3"></div>
+
+            <div class="block w-full">
+              <div class="px-5 pt-1 pb-1">
+                <h1 class="text-xs text-slate-400 font-medium tracking-wide">Stock Management</h1>
+              </div>
+            </div>
+
+            <a
+              routerLink="/admin/StockIn"
+              (click)="closeSidebarOnMobile()"
+              class="block w-full hover:bg-gray-700 rounded transition"
+            >
+              <div class="flex items-center px-5 py-2 text-sm">
+                <i class="fas fa-arrow-circle-down mr-2 text-white text-xs"></i>
+                <span [class.hidden]="!isSidebarOpen && !isMobileView">StockIn</span>
+              </div>
+            </a>
+
+            <a
+              routerLink="/admin/stockout"
+              (click)="closeSidebarOnMobile()"
+              class="block w-full hover:bg-gray-700 rounded transition"
+            >
+              <div class="flex items-center px-5 py-2 text-sm">
+                <i class="fas fa-arrow-circle-up mr-2 text-white text-xs"></i>
+                <span [class.hidden]="!isSidebarOpen && !isMobileView">StockOut</span>
+              </div>
+            </a>
+
+            <a
+              routerLink="/admin/stockIn_category"
+              (click)="closeSidebarOnMobile()"
+              class="block w-full hover:bg-gray-700 rounded transition"
+            >
+              <div class="flex items-center px-5 py-2 text-sm">
+                <i class="fas fa-tags mr-2 text-white text-xs"></i>
+                <span [class.hidden]="!isSidebarOpen && !isMobileView">StockIn Category</span>
+              </div>
+            </a>
+
+            <a
+              routerLink="/admin/stockout_category"
+              (click)="closeSidebarOnMobile()"
+              class="block w-full hover:bg-gray-700 rounded transition"
+            >
+              <div class="flex items-center px-5 py-2 text-sm">
+                <i class="fas fa-tags mr-2 text-white text-xs"></i>
+                <span [class.hidden]="!isSidebarOpen && !isMobileView">Stockout Category</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="p-4 border-t border-gray-700">
+    <i class="fas fa-sign-out-alt mr-2"></i>
+    <span [class.hidden]="!isSidebarOpen && !isMobileView">Log Out</span>
+  </div>
+</div>
+
+<div
+  [class.lg:pl-52]="isSidebarOpen && !isMobileView"
+  [class.lg:pl-20]="!isSidebarOpen && !isMobileView"
+  class="pt-16 transition-all duration-300 bg-white min-h-screen"
+>
+  <router-outlet></router-outlet>
+</div>
