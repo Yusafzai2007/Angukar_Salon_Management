@@ -1,0 +1,60 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <form
+    (ngSubmit)="onsubmit()"
+    class="w-full max-w-md p-6 bg-white shadow-lg rounded-2xl space-y-5 border border-gray-200"
+  >
+    <h2 class="text-xl  font-bold text-gray-800 text-center">
+      Service Category
+    </h2>
+
+    <div class="relative w-full">
+  <input
+    type="text"
+    id="category_name_floating"
+    [(ngModel)]="create_form.service_category_name"
+    name="service_category_name"
+    placeholder=" "
+    class="peer block w-full px-4 pt-5 pb-2 text-sm text-gray-800 bg-white border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+  />
+
+  <label
+    for="category_name_floating"
+    class="absolute left-3 bg-white px-1 text-gray-600 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200
+    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-500
+    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
+    peer-[&:not(:placeholder-shown)]:text-xs"
+  >
+    Category Name
+  </label>
+</div>
+
+   <div class="relative w-full">
+  <textarea
+    id="description_floating"
+    [(ngModel)]="create_form.description"
+    name="description"
+    rows="3"
+    placeholder=" "
+    class="peer block w-full px-4 pt-9 pb-2 text-sm text-gray-800 bg-white border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+  ></textarea>
+
+  <label
+    for="description_floating"
+    class="absolute left-3 bg-white px-1 text-gray-600 pointer-events-none top-4 text-sm transition-all duration-200
+    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-500
+    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
+    peer-[&:not(:placeholder-shown)]:text-xs"
+  >
+    Description
+  </label>
+</div>
+
+    <!-- Button -->
+    <button
+      type="submit"
+      class="w-full bg-slate-900 hover:bg-slate-700 text-white py-2 rounded-lg font-medium transition"
+    >
+      Submit
+    </button>
+  </form>
+</div>

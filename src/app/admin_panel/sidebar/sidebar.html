@@ -6,7 +6,7 @@
   </div>
 
   <!-- Menu Button - Always visible on mobile/tablet -->
-  <button 
+  <button
     class="lg:hidden flex items-center text-white text-3xl focus:outline-none"
     (click)="toggleSidebar()"
     aria-label="Toggle menu"
@@ -16,7 +16,7 @@
 </nav>
 
 <!-- Overlay for mobile when sidebar is open -->
-<div 
+<div
   *ngIf="isMobileView && isSidebarOpen"
   class="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
   (click)="toggleSidebar()"
@@ -34,7 +34,9 @@
     <div class="flex justify-between items-center p-4 border-b border-gray-700">
       <div class="flex items-center space-x-2">
         <i class="fas fa-globe text-white text-xl animate-spin"></i>
-        <span class="text-xl font-bold" [class.hidden]="!isSidebarOpen && !isMobileView">Salon</span>
+        <span class="text-xl font-bold" [class.hidden]="!isSidebarOpen && !isMobileView"
+          >Salon</span
+        >
       </div>
 
       <!-- Desktop collapse button -->
@@ -50,7 +52,7 @@
       </button>
 
       <!-- Mobile close button inside sidebar -->
-      <button 
+      <button
         *ngIf="isMobileView && isSidebarOpen"
         class="text-2xl text-white hover:text-gray-300"
         (click)="toggleSidebar()"
@@ -63,7 +65,7 @@
     <ul class="flex flex-col w-[200px] mt-5 space-y-2 overflow-y-auto flex-grow">
       <li>
         <a
-          routerLink="/user"
+          routerLink="/get_service_category"
           (click)="closeSidebarOnMobile()"
           class="block hover:bg-gray-700 rounded transition"
         >
@@ -85,7 +87,7 @@
         </a>
 
         <a
-          routerLink="/admin/Item_transaction"
+          routerLink="/service_category"
           (click)="closeSidebarOnMobile()"
           class="block w-full hover:bg-gray-700 rounded transition group"
         >
@@ -129,7 +131,7 @@
             </div>
 
             <a
-              routerLink="/admin/users"
+              routerLink="/user"
               (click)="closeSidebarOnMobile()"
               class="block w-full hover:bg-gray-700 rounded transition"
             >
@@ -143,7 +145,9 @@
 
             <div class="block w-full">
               <div class="px-5 pt-1 pb-1">
-                <h1 class="text-xs text-slate-400 font-medium tracking-wide">Inventory Management</h1>
+                <h1 class="text-xs text-slate-400 font-medium tracking-wide">
+                  Inventory Management
+                </h1>
               </div>
             </div>
 

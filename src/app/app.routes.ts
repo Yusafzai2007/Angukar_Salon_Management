@@ -3,10 +3,11 @@ import { Sidebar } from './admin_panel/sidebar/sidebar';
 import { User } from './admin_panel/user/user';
 import { AddUser } from './admin_panel/add-user/add-user';
 import { EditUser } from './admin_panel/edit-user/edit-user';
-import { Service } from './admin_panel/dashboard/service';
 import { ServiceAdd } from './admin_panel/service/service-add/service-add';
 import { EditService } from './admin_panel/service/edit-service/edit-service';
 import { ServicesFetch } from './admin_panel/service/services-fetch/services-fetch';
+import { CreateCategory } from './service_category/create-category/create-category';
+import { FetchCategory } from './service_category/fetch-category/fetch-category';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,14 @@ export const routes: Routes = [
       {
         path: 'edit_service/:id',
         component: EditService,
+      },
+      {
+        path: 'service_category',
+        component: CreateCategory,
+      },
+      {
+        path: 'get_service_category',
+        component: FetchCategory,
       },
     ],
   },
