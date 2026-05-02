@@ -1,157 +1,145 @@
 <form
   (ngSubmit)="submitservices()"
-  class="max-w-2xl mx-auto p-6 mt-36 bg-white shadow-2xl rounded-xl space-y-4 "
+  class="max-w-2xl mx-auto p-6 mt-36 bg-white shadow-2xl rounded-xl space-y-4"
 >
   <h2 class="text-xl font-semibold text-gray-800 text-center">Add Service</h2>
 
   <div class="grid grid-cols-2 gap-4">
     <!-- Service Name -->
-   
-                  <div class="relative w-full">
-                    <input
-                      type="text"
-      [(ngModel)]="add_service.Service_Name"
-                      name="Service_Name"
-                      placeholder=" "
-                      class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-400 rounded-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400 transition-colors"
-                    />
+    <div class="relative w-full">
+      <input
+        type="text"
+        [(ngModel)]="add_service.Service_Name"
+        name="Service_Name"
+        placeholder=" "
+        class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-400 rounded-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400 transition-colors"
+      />
+      <label
+        class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none transition-all duration-200 top-1/2 -translate-y-1/2 text-md peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-slate-700"
+      >
+        Item Name <span class="text-red-500">*</span>
+      </label>
+    </div>
 
-                    <label
-                      class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none transition-all duration-200 top-1/2 -translate-y-1/2 text-md peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm peer-[&:not(:placeholder-shown)]:text-slate-700"
-                    >
-                      Item Name <span class="text-red-500">*</span>
-                    </label>
-                  </div>
     <!-- Price -->
-   
-                  <div class="relative w-full">
-                    <input
-                      type="number"
-                      id="actualPrice_floating"
-      [(ngModel)]="add_service.price"
-                      name="price"
-                      placeholder=" "
-                      min="0"
-                      step="0.01"
-                      required
-                      class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
-                    />
-
-                    <label
-                      for="actualPrice_floating"
-                      class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
-                    >
-                      Actual Price <span class="text-red-500">*</span>
-                    </label>
-                  </div>
-
+    <div class="relative w-full">
+      <input
+        type="number"
+        [(ngModel)]="add_service.price"
+        name="price"
+        placeholder=" "
+        min="0"
+        step="0.01"
+        class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+      />
+      <label
+        class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
+      >
+        Actual Price <span class="text-red-500">*</span>
+      </label>
+    </div>
 
     <!-- Discount -->
-                  <div class="relative w-full">
-                    <input
-                      type="number"
-                      id="discount_floating"
-      [(ngModel)]="add_service.discount"
-                      name="discount"
-                      placeholder=" "
-                      min="0"
-                      step="0.01"
-                      class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
-                    />
-
-                    <label
-                      for="discount_floating"
-                      class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
-                    >
-                      Discount
-                    </label>
-                  </div>
-
-    
-
-        <div class="relative w-full">
-                    <input
-                      type="number"
-                      id="finalPrice_floating"
-      [(ngModel)]="add_service.final_price"
-                      name="final_price"
-                      placeholder=" "
-                      min="0"
-                      step="0.01"
-                      class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
-                    />
-
-                    <label
-                      for="finalPrice_floating"
-                      class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
-                    >
-                      final Price
-                    </label>
-                  </div>
-
     <div class="relative w-full">
-                    <input
-                      type="number"
-                      id="duration_floating"
-      [(ngModel)]="add_service.duration"
-                      name="duration"
-                      placeholder=" "
-                      min="0"
-                      step="0.01"
-                      class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
-                    />
+      <input
+        type="number"
+        [(ngModel)]="add_service.discount"
+        name="discount"
+        placeholder=" "
+        min="0"
+        step="0.01"
+        class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+      />
+      <label
+        class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
+      >
+        Discount
+      </label>
+    </div>
 
-                    <label
-                      for="duration_floating"
-                      class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
-                    >
-                      Duration
-                    </label>
-                  </div>
+    <!-- Final Price -->
+    <div class="relative w-full">
+      <input
+        type="number"
+        [(ngModel)]="add_service.final_price"
+        name="final_price"
+        placeholder=" "
+        min="0"
+        step="0.01"
+        class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+      />
+      <label
+        class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
+      >
+        Final Price <span class="text-red-500">*</span>
+      </label>
+    </div>
 
- <div class="relative w-full">
-                    <input
-                      type="text"
-                      id="category_floating"
-      [(ngModel)]="add_service.category"
-                      name="category"
-                      placeholder=" "
-                      min="0"
-                      step="0.01"
-                      class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
-                    />
+    <!-- Duration -->
+    <div class="relative w-full">
+      <input
+        type="number"
+        [(ngModel)]="add_service.duration"
+        name="duration"
+        placeholder=" "
+        min="0"
+        step="0.01"
+        class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+      />
+      <label
+        class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
+      >
+        Duration <span class="text-red-500">*</span>
+      </label>
+    </div>
 
-                    <label
-                      for="category_floating"
-                      class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
-                    >
-                      Category
-                    </label>
-                  </div>
-    
+    <!-- Category Search Input -->
+    <div class="relative w-full">
+      <input
+        type="text"
+        [(ngModel)]="searchCategory"
+        name="searchCategory"
+        (input)="filterCategories()"
+        placeholder=" "
+        class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-500 rounded-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+      />
+      <label
+        class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
+      >
+        Search Category <span class="text-red-500">*</span>
+      </label>
+
+      <!-- Dropdown list -->
+      <div
+        *ngIf="filteredCategories.length > 0"
+        class="absolute z-10 w-full bg-white border border-gray-300 rounded-sm mt-1 max-h-40 overflow-y-auto"
+      >
+        <div
+          *ngFor="let cat of filteredCategories"
+          (click)="selectCategory(cat)"
+          class="px-4 py-2 hover:bg-indigo-100 cursor-pointer text-sm"
+        >
+          {{ cat.service_category_name }}
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- Description -->
   <div class="relative w-full">
-  <textarea
-    id="description_floating"
-    [(ngModel)]="add_service.description"
-    name="description"
-    rows="3"
-    placeholder=" "
-    class="peer block w-full px-7 pt-5 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
-    required
-  ></textarea>
-
-  <label
-    for="description_floating"
-    class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-4 text-md transition-all duration-200 
-    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 
-    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 
-    peer-[&:not(:placeholder-shown)]:text-sm"
-  >
-    Description
-  </label>
-</div>
+    <textarea
+      [(ngModel)]="add_service.description"
+      name="description"
+      rows="3"
+      placeholder=" "
+      class="peer block w-full px-7 pt-5 pb-2 text-sm text-slate-900 bg-transparent border border-slate-500 rounded-sm appearance-none focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+    ></textarea>
+    <label
+      class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-4 text-md transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-sm peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-sm"
+    >
+      Description <span class="text-red-500">*</span>
+    </label>
+  </div>
 
   <!-- Image Upload -->
   <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">

@@ -36,9 +36,9 @@ export class Sidebar {
   }
 
   configureItems = [
-    { name: 'Product_group', link: '/admin/product_group', icon: 'fas fa-layer-group' },
-    { name: 'Add_Product', link: '/admin/add_product', icon: 'fas fa-plus-square' },
-    { name: 'Products', link: '/admin/products', icon: 'fas fa-boxes' },
+    { name: 'Services', link: '/service', icon: 'fas fa-layer-group' },
+    { name: 'Add_Services', link: '/add_service', icon: 'fas fa-plus-square' },
+    { name: 'Service Categories', link: '/get_service_category', icon: 'fas fa-boxes' },
   ];
 
   checkScreen() {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { add_Service, ServiceResponse } from '../../data_type/service/servicetype';
+import {  ServiceResponse } from '../../data_type/service/servicetype';
 
 @Injectable({
   providedIn: 'root',

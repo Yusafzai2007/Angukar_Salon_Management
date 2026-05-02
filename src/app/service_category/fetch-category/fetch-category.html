@@ -23,7 +23,7 @@
       </button>
     </div>
   </div>
-  
+
   <div class="mb-6">
     <div class="flex items-center gap-4">
       <div class="relative">
@@ -59,7 +59,7 @@
       Found {{ filteredCategoryData.length }} of {{ categoryData.length }} categories
     </div>
   </div>
-  
+
   <!-- Categories Table -->
   <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
     <div class="overflow-x-auto">
@@ -183,59 +183,65 @@
 </div>
 
 <!-- Edit Modal -->
-<div *ngIf="showEditModal" class="fixed inset-0 bg-gray-600   bg-opacity-50 overflow-y-auto h-full w-full z-50" (click)="closeModal()">
-  <div class="relative top-20 mx-auto p-5 border w-full mt-36  max-w-md shadow-lg rounded-md bg-white" (click)="$event.stopPropagation()">
+<div
+  *ngIf="showEditModal"
+  class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50"
+  (click)="closeModal()"
+>
+  <div
+    class="relative top-20 mx-auto p-5 border w-full mt-36 max-w-md shadow-lg rounded-md bg-white"
+    (click)="$event.stopPropagation()"
+  >
     <div class="flex justify-between items-center mb-4">
       <h3 class="text-lg font-medium text-gray-900">Edit Category</h3>
       <button (click)="closeModal()" class="text-gray-400 hover:text-gray-600">
         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
         </svg>
       </button>
     </div>
-    
+
     <div class="relative w-full mb-4">
-  <input
-    type="text"
-    id="edit_service_name_floating"
-    [(ngModel)]="editCategoryData.service_category_name"
-    name="edit_service_category_name"
-    placeholder=" "
-    class="peer w-full px-3 pt-5 pb-2 rounded-sm text-sm text-gray-800 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-  />
+      <input
+        type="text"
+        id="edit_service_name_floating"
+        [(ngModel)]="editCategoryData.service_category_name"
+        name="edit_service_category_name"
+        placeholder=" "
+        class="peer w-full px-3 pt-5 pb-2 rounded-sm text-sm text-gray-800 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
 
-  <label
-    for="edit_service_name_floating"
-    class="absolute left-3 bg-white px-1 text-gray-600 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200
-    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-blue-500
-    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
-    peer-[&:not(:placeholder-shown)]:text-xs"
-  >
-    Service Name *
-  </label>
-</div>
-    
-   <div class="relative w-full mb-4">
-  <textarea
-    id="edit_description_floating"
-    [(ngModel)]="editCategoryData.description"
-    name="edit_description"
-    rows="4"
-    placeholder=" "
-    class="peer w-full px-3 pt-5 pb-2 text-sm text-gray-800 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
-  ></textarea>
+      <label
+        for="edit_service_name_floating"
+        class="absolute left-3 bg-white px-1 text-gray-600 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-blue-500 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs"
+      >
+        Service Name *
+      </label>
+    </div>
 
-  <label
-    for="edit_description_floating"
-    class="absolute left-3 bg-white px-1 text-gray-600 pointer-events-none top-4 text-sm transition-all duration-200
-    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-blue-500
-    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
-    peer-[&:not(:placeholder-shown)]:text-xs"
-  >
-    Description *
-  </label>
-</div>
-    
+    <div class="relative w-full mb-4">
+      <textarea
+        id="edit_description_floating"
+        [(ngModel)]="editCategoryData.description"
+        name="edit_description"
+        rows="4"
+        placeholder=" "
+        class="peer w-full px-3 pt-5 pb-2 text-sm text-gray-800 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+      ></textarea>
+
+      <label
+        for="edit_description_floating"
+        class="absolute left-3 bg-white px-1 text-gray-600 pointer-events-none top-4 text-sm transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-blue-500 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs"
+      >
+        Description *
+      </label>
+    </div>
+
     <div class="flex justify-end gap-3">
       <button
         (click)="closeModal()"

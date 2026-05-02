@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiData } from '../api-data';
-import { Service_data, ServiceResponse } from '../../../data_type/service/servicetype';
+import {  ServiceData, ServiceResponse } from '../../../data_type/service/servicetype';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +18,7 @@ export class ServicesFetch implements OnInit {
     private cd: ChangeDetectorRef,
   ) {}
 
-  services: Service_data[] = [];
+  services: ServiceData[] = [];
 
   // Search properties
   searchTermServiceName: string = '';
@@ -26,11 +26,11 @@ export class ServicesFetch implements OnInit {
   searchTermDuration: string = '';
   searchTermDiscount: string = '';
   searchTermDescription: string = '';
-  filteredServices: Service_data[] = [];
+  filteredServices: ServiceData[] = [];
 
   // Modal properties
   isModalOpen: boolean = false;
-  selectedService: Service_data | null = null;
+  selectedService: ServiceData | null = null;
   currentImage: string | undefined;
   ngOnInit() {
     this.get_services();
@@ -72,7 +72,7 @@ export class ServicesFetch implements OnInit {
 
       const matchesCategory =
         !this.searchTermCategory ||
-        service.category.toLowerCase().includes(this.searchTermCategory.toLowerCase());
+        service.category.service_category_name.toLowerCase().includes(this.searchTermCategory.toLowerCase());
 
       const matchesDuration =
   !this.searchTermDuration ||
@@ -129,7 +129,7 @@ export class ServicesFetch implements OnInit {
     this.clearDescriptionSearch();
   }
 
-  openModal(service: Service_data) {
+  openModal(service: ServiceData) {
     this.selectedService = service;
     this.currentImage = service.service_Image?.[0] || 'assets/no-image.png';
     this.isModalOpen = true;
