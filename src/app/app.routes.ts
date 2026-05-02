@@ -8,6 +8,7 @@ import { EditService } from './admin_panel/service/edit-service/edit-service';
 import { ServicesFetch } from './admin_panel/service/services-fetch/services-fetch';
 import { CreateCategory } from './service_category/create-category/create-category';
 import { FetchCategory } from './service_category/fetch-category/fetch-category';
+import { FetchAppointment } from './appointment/fetch-appointment/fetch-appointment';
 
 export const routes: Routes = [
   {
@@ -46,6 +47,10 @@ export const routes: Routes = [
         path: 'get_service_category',
         component: FetchCategory,
       },
+      {
+        path:'get_appointment',
+        component: FetchAppointment,
+      }
     ],
   },
 ];

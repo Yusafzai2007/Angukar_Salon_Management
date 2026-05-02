@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiData } from '../api-data';
-import {  ServiceData, ServiceResponse } from '../../../data_type/service/servicetype';
+import { ServiceData, ServiceResponse } from '../../../data_type/service/servicetype';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -72,11 +72,12 @@ export class ServicesFetch implements OnInit {
 
       const matchesCategory =
         !this.searchTermCategory ||
-        service.category.service_category_name.toLowerCase().includes(this.searchTermCategory.toLowerCase());
+        service.category.service_category_name
+          .toLowerCase()
+          .includes(this.searchTermCategory.toLowerCase());
 
       const matchesDuration =
-  !this.searchTermDuration ||
-  Number(service.duration) === Number(this.searchTermDuration);
+        !this.searchTermDuration || Number(service.duration) === Number(this.searchTermDuration);
       const matchesDiscount =
         !this.searchTermDiscount || service.discount.toString().includes(this.searchTermDiscount);
 
@@ -84,7 +85,13 @@ export class ServicesFetch implements OnInit {
         !this.searchTermDescription ||
         service.description.toLowerCase().includes(this.searchTermDescription.toLowerCase());
 
-      return matchesServiceName && matchesCategory && matchesDuration && matchesDiscount && matchesDescription;
+      return (
+        matchesServiceName &&
+        matchesCategory &&
+        matchesDuration &&
+        matchesDiscount &&
+        matchesDescription
+      );
     });
   }
 

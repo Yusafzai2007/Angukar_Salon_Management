@@ -65,13 +65,13 @@
     <ul class="flex flex-col w-[200px] mt-5 space-y-2 overflow-y-auto flex-grow">
       <li>
         <a
-          routerLink="/get_service_category"
+          routerLink="/get_appointment"
           (click)="closeSidebarOnMobile()"
           class="block hover:bg-gray-700 rounded transition"
         >
           <div class="flex items-center px-5 py-2">
             <i class="fas fa-tachometer-alt text-white mr-2 text-xs"></i>
-            <span [class.hidden]="!isSidebarOpen && !isMobileView">Dashboard</span>
+            <span [class.hidden]="!isSidebarOpen && !isMobileView">get_appointment</span>
           </div>
         </a>
 
