@@ -145,9 +145,7 @@
 
             <div class="block w-full">
               <div class="px-5 pt-1 pb-1">
-                <h1 class="text-xs text-slate-400 font-medium tracking-wide">
-                  Service Management
-                </h1>
+                <h1 class="text-xs text-slate-400 font-medium tracking-wide">Service Management</h1>
               </div>
             </div>
 
@@ -170,18 +168,18 @@
 
             <div class="block w-full">
               <div class="px-5 pt-1 pb-1">
-                <h1 class="text-xs text-slate-400 font-medium tracking-wide">Stock Management</h1>
+                <h1 class="text-xs text-slate-400 font-medium tracking-wide">Staff Management</h1>
               </div>
             </div>
 
             <a
-              routerLink="/admin/StockIn"
+              routerLink="/get_staff"
               (click)="closeSidebarOnMobile()"
               class="block w-full hover:bg-gray-700 rounded transition"
             >
               <div class="flex items-center px-5 py-2 text-sm">
                 <i class="fas fa-arrow-circle-down mr-2 text-white text-xs"></i>
-                <span [class.hidden]="!isSidebarOpen && !isMobileView">StockIn</span>
+                <span [class.hidden]="!isSidebarOpen && !isMobileView">get_staff</span>
               </div>
             </a>
 

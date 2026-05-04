@@ -9,6 +9,8 @@ import { ServicesFetch } from './admin_panel/service/services-fetch/services-fet
 import { CreateCategory } from './service_category/create-category/create-category';
 import { FetchCategory } from './service_category/fetch-category/fetch-category';
 import { FetchAppointment } from './appointment/fetch-appointment/fetch-appointment';
+import { AddStaff } from './staff/add-staff/add-staff';
+import { FetchStaff } from './staff/fetch-staff/fetch-staff';
 
 export const routes: Routes = [
   {
@@ -48,9 +50,17 @@ export const routes: Routes = [
         component: FetchCategory,
       },
       {
-        path:'get_appointment',
+        path: 'get_appointment',
         component: FetchAppointment,
-      }
+      },
+      {
+        path: 'add_staff',
+        component: AddStaff,
+      },
+      {
+        path: 'get_staff',
+        component: FetchStaff,
+      },
     ],
   },
 ];

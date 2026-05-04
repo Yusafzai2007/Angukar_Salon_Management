@@ -37,39 +37,47 @@
         <div>
           <!-- User Name -->
           <div class="relative w-full">
-            <input
-              type="text"
-              [(ngModel)]="filters.username"
-              (input)="applyFilters()"
-              placeholder=" "
-              class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-colors"
-            />
-            <label
-              class="absolute left-3 bg-white px-1 top-1/2 -translate-y-1/2 text-sm text-slate-700 pointer-events-none transition-all duration-200 peer-focus:top-2 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-500 peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-slate-700"
-            >
-              User Name
-            </label>
-          </div>
+  <input
+    type="text"
+    id="username_floating"
+    [(ngModel)]="filters.username"
+    name="username"
+    (input)="applyFilters()"
+    placeholder=" "
+    class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-colors"
+  />
+  <label
+    for="username_floating"
+    class="absolute left-3 bg-white px-1 top-1/2 -translate-y-1/2 text-sm text-slate-700 pointer-events-none transition-all duration-200 
+    peer-focus:top-2 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-500 
+    peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:-translate-y-3 
+    peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-slate-700"
+  >
+    User Name
+  </label>
+</div>
         </div>
 
-        <!-- Email Filter -->
-        <div>
-          <!-- Email -->
-          <div class="relative w-full">
-            <input
-              type="text"
-              [(ngModel)]="filters.email"
-              (input)="applyFilters()"
-              placeholder=" "
-              class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-colors"
-            />
-            <label
-              class="absolute left-3 bg-white px-1 top-1/2 -translate-y-1/2 text-sm text-slate-700 pointer-events-none transition-all duration-200 peer-focus:top-2 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-500 peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-slate-700"
-            >
-              Email Address
-            </label>
-          </div>
-        </div>
+       <div class="relative w-full">
+  <input
+    type="email"
+    id="email_floating"
+    [(ngModel)]="filters.email"
+    name="email"
+    (input)="applyFilters()"
+    placeholder=" "
+    class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-colors"
+  />
+  <label
+    for="email_floating"
+    class="absolute left-3 bg-white px-1 top-1/2 -translate-y-1/2 text-sm text-slate-700 pointer-events-none transition-all duration-200 
+    peer-focus:top-2 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-500 
+    peer-[&:not(:placeholder-shown)]:top-2 peer-[&:not(:placeholder-shown)]:-translate-y-3 
+    peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:text-slate-700"
+  >
+    Email Address
+  </label>
+</div>
 
         <!-- Role Filter -->
         <div>
