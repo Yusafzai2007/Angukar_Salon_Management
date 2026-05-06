@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiResponse, CreateStaffPayload } from '../data_staff';
+import { StaffResponse } from '../edit_staff';
 
 @Injectable({
   providedIn: 'root',
@@ -20,5 +21,13 @@ export class Data {
 
   createStaff(staffData: CreateStaffPayload) {
     return this.http.post(`${this.url}/create-staff`, staffData);
+  }
+
+  singleStaff(id: string) {
+    return this.http.get<StaffResponse>(`${this.url}/single-staff/${id}`);
+  }
+
+  updateStaff(id: string, staffData: CreateStaffPayload) {
+    return this.http.put<StaffResponse>(`${this.url}/update-staff/${id}`, staffData);
   }
 }

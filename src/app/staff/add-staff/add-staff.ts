@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { Data } from '../staff/data';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Data } from '../staff/data';
 import { Userdata, UsersResponse } from '../../data_type/signup';
 import { Service } from '../../admin_panel/dashboard/service';
 import { ServiceData, ServiceResponse } from '../../data_type/service/servicetype';
@@ -12,7 +12,7 @@ import { ApiData } from '../../admin_panel/service/api-data';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './add-staff.html',
-  styleUrl: './add-staff.css',
+  styleUrls: ['./add-staff.css']
 })
 export class AddStaff {
   constructor(
@@ -28,7 +28,8 @@ export class AddStaff {
     experience: '',
     address: '',
     description: '',
-    Service_Name: [] as string[], // Changed to store service names/IDs
+    serviceIds: [] as string[],
+    serviceNames: [] as string[]
   };
 
   userdata: Userdata[] = [];
@@ -41,7 +42,7 @@ export class AddStaff {
   serviceSearchText: string = '';
   serviceDropdownOpen: boolean = false;
   filteredServices: ServiceData[] = [];
-  selectedServices: ServiceData[] = []; // Store selected service objects
+  selectedServices: ServiceData[] = [];
 
   ngOnInit(): void {
     this.getData();
@@ -92,6 +93,7 @@ export class AddStaff {
         service.Service_Name.toLowerCase().includes(this.serviceSearchText.toLowerCase()),
       );
     }
+    this.cd.detectChanges();
   }
 
   toggleServiceDropdown() {
@@ -102,40 +104,60 @@ export class AddStaff {
   }
 
   closeServiceDropdown() {
-    setTimeout(() => {
-      this.serviceDropdownOpen = false;
-    }, 200);
+    this.serviceDropdownOpen = false;
   }
 
-  selectService(service: ServiceData) {
-    // Check if service already selected
-    const isSelected = this.selectedServices.some(s => s._id === service._id);
+  // Check if service is already selected
+  isServiceSelected(service: ServiceData): boolean {
+    return this.selectedServices.some(s => s._id === service._id);
+  }
+
+  // Select service with validation to prevent double selection
+  selectService(service: ServiceData, event: Event) {
+    event.stopPropagation();
     
-    if (!isSelected) {
-      this.selectedServices.push(service);
-      this.staffData.Service_Name.push(service.Service_Name);
+    // Check if service already selected
+    if (this.isServiceSelected(service)) {
+      console.log('Service already selected:', service.Service_Name);
+      return; // Prevent double selection
     }
     
+    // Add to selected services
+    this.selectedServices.push(service);
+    this.staffData.serviceIds.push(service._id);
+    this.staffData.serviceNames.push(service.Service_Name);
+    
+    console.log('Service added:', service.Service_Name);
+    console.log('All service IDs:', this.staffData.serviceIds);
+    
+    // Clear search text but keep dropdown open for multiple selections
     this.serviceSearchText = '';
     this.filteredServices = [...this.services];
     this.cd.detectChanges();
   }
 
-  removeService(service: ServiceData) {
+  removeService(service: ServiceData, event: Event) {
+    event.stopPropagation();
     const index = this.selectedServices.findIndex(s => s._id === service._id);
     if (index !== -1) {
       this.selectedServices.splice(index, 1);
-      this.staffData.Service_Name.splice(index, 1);
+      this.staffData.serviceIds.splice(index, 1);
+      this.staffData.serviceNames.splice(index, 1);
     }
     this.cd.detectChanges();
   }
 
   get_services() {
-    this.apidata.get_services().subscribe((res: ServiceResponse) => {
-      this.services = res.data;
-      this.filteredServices = [...res.data];
-      console.log('services', this.services);
-      this.cd.detectChanges();
+    this.apidata.get_services().subscribe({
+      next: (res: ServiceResponse) => {
+        this.services = res.data;
+        this.filteredServices = [...res.data];
+        console.log('Available services:', this.services);
+        this.cd.detectChanges();
+      },
+      error: (error) => {
+        console.error('Error fetching services:', error);
+      }
     });
   }
 
@@ -147,13 +169,26 @@ export class AddStaff {
       !this.staffData.experience ||
       !this.staffData.address ||
       !this.staffData.description ||
-      !this.staffData.Service_Name.length
+      !this.selectedServices.length
     ) {
       alert('Please fill all required fields and select at least one service!');
       return;
     }
 
-    this.staffService.createStaff(this.staffData).subscribe({
+    // Prepare data for backend - Match Postman format
+    const payload = {
+      userName: this.staffData.userName,
+      phone_number: this.staffData.phone_number,
+      experience: this.staffData.experience,
+      address: this.staffData.address,
+      description: this.staffData.description,
+      Service_Name: this.staffData.serviceNames
+    };
+
+    console.log('Sending payload to backend:', payload);
+    console.log('Selected services details:', this.selectedServices);
+
+    this.staffService.createStaff(payload).subscribe({
       next: (res) => {
         console.log('Staff created successfully:', res);
         alert('Staff created successfully!');
@@ -161,7 +196,16 @@ export class AddStaff {
       },
       error: (error) => {
         console.error('Error creating staff:', error);
-        alert('Error creating staff. Please try again.');
+        console.error('Error details:', error.error);
+        
+        let errorMessage = 'Error creating staff. ';
+        if (error.error?.message) {
+          errorMessage += error.error.message;
+        }
+        if (error.error?.error) {
+          errorMessage += '\nDetails: ' + JSON.stringify(error.error.error);
+        }
+        alert(errorMessage);
       },
     });
   }
@@ -173,13 +217,15 @@ export class AddStaff {
       experience: '',
       address: '',
       description: '',
-      Service_Name: [],
+      serviceIds: [],
+      serviceNames: []
     };
     this.searchText = '';
     this.dropdownOpen = false;
     this.filteredUsers = [...this.userdata];
     this.selectedServices = [];
     this.serviceSearchText = '';
+    this.serviceDropdownOpen = false;
     this.cd.detectChanges();
   }
 }

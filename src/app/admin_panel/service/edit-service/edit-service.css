@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar for dropdowns */
+.max-h-40::-webkit-scrollbar {
+  width: 6px;
+}
+
+.max-h-40::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.max-h-40::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.max-h-40::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Image hover effects */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}

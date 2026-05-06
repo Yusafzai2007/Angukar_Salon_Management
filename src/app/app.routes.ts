@@ -11,6 +11,7 @@ import { FetchCategory } from './service_category/fetch-category/fetch-category'
 import { FetchAppointment } from './appointment/fetch-appointment/fetch-appointment';
 import { AddStaff } from './staff/add-staff/add-staff';
 import { FetchStaff } from './staff/fetch-staff/fetch-staff';
+import { EditStaff } from './staff/edit-staff/edit-staff';
 
 export const routes: Routes = [
   {
@@ -60,6 +61,10 @@ export const routes: Routes = [
       {
         path: 'get_staff',
         component: FetchStaff,
+      },
+      {
+        path: 'edit_staff/:id',
+        component: EditStaff,
       },
     ],
   },

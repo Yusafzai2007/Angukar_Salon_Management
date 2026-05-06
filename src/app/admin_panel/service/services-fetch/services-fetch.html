@@ -47,89 +47,76 @@
       </div>
 
       <!-- Category -->
-    <div class="relative w-full">
-  <input
-    type="text"
-    id="search_category_floating"
-    [(ngModel)]="searchTermCategory"
-    (input)="filterServices()"
-    placeholder=" "
-    class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
-  />
+      <div class="relative w-full">
+        <input
+          type="text"
+          id="search_category_floating"
+          [(ngModel)]="searchTermCategory"
+          (input)="filterServices()"
+          placeholder=" "
+          class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+        />
 
-  <label
-    for="search_category_floating"
-    class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200
-    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400
-    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
-    peer-[&:not(:placeholder-shown)]:text-xs"
-  >
-    Category
-  </label>
-</div>
-      
+        <label
+          for="search_category_floating"
+          class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs"
+        >
+          Category
+        </label>
+      </div>
 
-   <div class="relative w-full">
-  <input
-    type="text"
-    id="search_duration_floating"
-    [(ngModel)]="searchTermDuration"
-    (input)="filterServices()"
-    placeholder=" "
-    class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
-  />
+      <div class="relative w-full">
+        <input
+          type="text"
+          id="search_duration_floating"
+          [(ngModel)]="searchTermDuration"
+          (input)="filterServices()"
+          placeholder=" "
+          class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+        />
 
-  <label
-    for="search_duration_floating"
-    class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200
-    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400
-    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
-    peer-[&:not(:placeholder-shown)]:text-xs"
-  >
-    Duration
-  </label>
-</div>
+        <label
+          for="search_duration_floating"
+          class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs"
+        >
+          Duration
+        </label>
+      </div>
 
-     <div class="relative w-full">
-  <input
-    type="text"
-    id="search_description_floating"
-    [(ngModel)]="searchTermDescription"
-    (input)="filterServices()"
-    placeholder=" "
-    class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
-  />
+      <div class="relative w-full">
+        <input
+          type="text"
+          id="search_description_floating"
+          [(ngModel)]="searchTermDescription"
+          (input)="filterServices()"
+          placeholder=" "
+          class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+        />
 
-  <label
-    for="search_description_floating"
-    class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200
-    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400
-    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
-    peer-[&:not(:placeholder-shown)]:text-xs"
-  >
-    Description
-  </label>
-</div>
-   <div class="relative w-full">
-  <input
-    type="number"
-    id="search_discount_floating"
-    [(ngModel)]="searchTermDiscount"
-    (input)="filterServices()"
-    placeholder=" "
-    class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
-  />
+        <label
+          for="search_description_floating"
+          class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs"
+        >
+          Description
+        </label>
+      </div>
+      <div class="relative w-full">
+        <input
+          type="number"
+          id="search_discount_floating"
+          [(ngModel)]="searchTermDiscount"
+          (input)="filterServices()"
+          placeholder=" "
+          class="peer block w-full px-7 pt-3 pb-2 text-sm text-slate-900 bg-white border border-slate-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-400 focus:border-indigo-400"
+        />
 
-  <label
-    for="search_discount_floating"
-    class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200
-    peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400
-    peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3
-    peer-[&:not(:placeholder-shown)]:text-xs"
-  >
-    Discount
-  </label>
-</div>
+        <label
+          for="search_discount_floating"
+          class="absolute left-3 bg-white px-1 text-slate-700 pointer-events-none top-1/2 -translate-y-1/2 text-sm transition-all duration-200 peer-focus:top-1 peer-focus:-translate-y-3 peer-focus:text-xs peer-focus:text-indigo-400 peer-[&:not(:placeholder-shown)]:top-1 peer-[&:not(:placeholder-shown)]:-translate-y-3 peer-[&:not(:placeholder-shown)]:text-xs"
+        >
+          Discount
+        </label>
+      </div>
 
       <!-- Button (NEW COLUMN) -->
       <div class="flex items-end">
@@ -242,6 +229,7 @@
               <div class="flex items-center space-x-3">
                 <!-- Edit Button -->
                 <button
+                  [routerLink]="['/edit_service', service._id]"
                   class="text-indigo-600 hover:text-indigo-900 transition-colors duration-200"
                   title="Edit User"
                 >
