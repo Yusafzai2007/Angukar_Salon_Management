@@ -5,6 +5,23 @@
     <span class="tracking-wide">Salon ManagementSystem</span>
   </div>
 
+  <div class="hidden lg:flex items-center gap-4 text-white">
+    <i class="fa-solid fa-circle-user text-3xl"></i>
+
+    <div class="flex flex-col leading-tight">
+      <p class="font-semibold text-lg">
+        {{ currentUserData?.userName }}
+      </p>
+
+      <p class="text-sm text-gray-300 flex items-center gap-2">
+        <span>{{ currentUserData?.email }}</span>
+
+        <span class="bg-indigo-700 text-white px-2 py-0.5 rounded-md text-xs">
+          {{ currentUserData?.role }}
+        </span>
+      </p>
+    </div>
+  </div>
   <!-- Menu Button - Always visible on mobile/tablet -->
   <button
     class="lg:hidden flex items-center text-white text-3xl focus:outline-none"
@@ -65,7 +82,7 @@
     <ul class="flex flex-col w-[200px] mt-5 space-y-2 overflow-y-auto flex-grow">
       <li>
         <a
-          routerLink="/get_appointment"
+          routerLink="/admin/get_appointment"
           (click)="closeSidebarOnMobile()"
           class="block hover:bg-gray-700 rounded transition"
         >
@@ -75,7 +92,7 @@
           </div>
         </a>
 
-        <a
+        <!-- <a
           routerLink="/service"
           (click)="closeSidebarOnMobile()"
           class="block w-full hover:bg-gray-700 rounded transition"
@@ -84,10 +101,10 @@
             <i class="fas fa-exchange-alt mr-2 text-white text-xs"></i>
             <span [class.hidden]="!isSidebarOpen && !isMobileView">Stock Transactions</span>
           </div>
-        </a>
+        </a> -->
 
         <a
-          routerLink="/service_category"
+          routerLink="/admin/service_category"
           (click)="closeSidebarOnMobile()"
           class="block w-full hover:bg-gray-700 rounded transition group"
         >
@@ -131,7 +148,7 @@
             </div>
 
             <a
-              routerLink="/user"
+              routerLink="/admin/user"
               (click)="closeSidebarOnMobile()"
               class="block w-full hover:bg-gray-700 rounded transition"
             >
@@ -173,28 +190,28 @@
             </div>
 
             <a
-              routerLink="/get_staff"
+              routerLink="/admin/get_staff"
               (click)="closeSidebarOnMobile()"
               class="block w-full hover:bg-gray-700 rounded transition"
             >
               <div class="flex items-center px-5 py-2 text-sm">
                 <i class="fas fa-arrow-circle-down mr-2 text-white text-xs"></i>
-                <span [class.hidden]="!isSidebarOpen && !isMobileView">get_staff</span>
+                <span [class.hidden]="!isSidebarOpen && !isMobileView">Staff</span>
               </div>
             </a>
 
             <a
-              routerLink="/admin/stockout"
+              routerLink="/admin/add_staff"
               (click)="closeSidebarOnMobile()"
               class="block w-full hover:bg-gray-700 rounded transition"
             >
               <div class="flex items-center px-5 py-2 text-sm">
                 <i class="fas fa-arrow-circle-up mr-2 text-white text-xs"></i>
-                <span [class.hidden]="!isSidebarOpen && !isMobileView">StockOut</span>
+                <span [class.hidden]="!isSidebarOpen && !isMobileView">Add_Staff</span>
               </div>
             </a>
 
-            <a
+            <!-- <a
               routerLink="/admin/stockIn_category"
               (click)="closeSidebarOnMobile()"
               class="block w-full hover:bg-gray-700 rounded transition"
@@ -214,7 +231,7 @@
                 <i class="fas fa-tags mr-2 text-white text-xs"></i>
                 <span [class.hidden]="!isSidebarOpen && !isMobileView">Stockout Category</span>
               </div>
-            </a>
+            </a> -->
           </div>
         </div>
       </li>
@@ -223,7 +240,7 @@
 
   <div class="p-4 border-t border-gray-700">
     <i class="fas fa-sign-out-alt mr-2"></i>
-    <span [class.hidden]="!isSidebarOpen && !isMobileView">Log Out</span>
+    <span [class.hidden]="!isSidebarOpen && !isMobileView" (click)="logout_user()">Log Out</span>
   </div>
 </div>
 

@@ -12,10 +12,17 @@ import { FetchAppointment } from './appointment/fetch-appointment/fetch-appointm
 import { AddStaff } from './staff/add-staff/add-staff';
 import { FetchStaff } from './staff/fetch-staff/fetch-staff';
 import { EditStaff } from './staff/edit-staff/edit-staff';
+import { Login } from './create_account/login/login';
 
 export const routes: Routes = [
+
   {
     path: '',
+    component:Login
+  },
+ 
+  {
+    path: 'admin',
     component: Sidebar,
     children: [
       {

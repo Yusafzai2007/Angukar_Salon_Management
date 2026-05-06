@@ -11,7 +11,7 @@
       <!-- Add User Button -->
       <button
         type="button"
-        routerLink="/add_service"
+        routerLink="/admin/add_service"
         class="bg-slate-800 hover:bg-slate-800 text-white px-6 py-2.5 font-medium transition-all duration-300 flex items-center gap-2"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -229,7 +229,7 @@
               <div class="flex items-center space-x-3">
                 <!-- Edit Button -->
                 <button
-                  [routerLink]="['/edit_service', service._id]"
+                  [routerLink]="['/admin/edit_service', service._id]"
                   class="text-indigo-600 hover:text-indigo-900 transition-colors duration-200"
                   title="Edit User"
                 >

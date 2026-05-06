@@ -104,7 +104,7 @@ export class EditUser implements OnInit {
         next: (res) => {
           console.log(res);
           alert('User updated successfully');
-          this.router.navigate(['/user']);
+          this.router.navigate(['/admin/user']);
         },
         error: (err) => {
           console.log(err);

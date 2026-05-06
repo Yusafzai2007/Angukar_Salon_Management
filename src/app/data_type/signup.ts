@@ -28,7 +28,21 @@ export interface AddUserdata {
 }
 
 
-
+export interface UserDataResponse {
+  message: string;
+  statuscode: number;
+  data: {
+    _id: string;
+    userName: string;
+    email: string;
+    role: string;
+    status: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  };
+  success: boolean;
+}
 
 
 

@@ -241,7 +241,7 @@ export class EditService implements OnInit {
         console.log('Service updated successfully:', res);
         if (res.success) {
           alert('Service updated successfully!');
-          this.router.navigate(['/services']);
+          this.router.navigate(['/admin/service']);
         } else {
           alert('Failed to update service: ' + res.message);
         }
